@@ -6,7 +6,7 @@ FROM registry.access.redhat.com/rhscl/php-70-rhel7
 EXPOSE 8080
 
 ENV PHP_VERSION=7.0 \
-    PATH=$PATH:/opt/rh/rh-php70/root/usr/bin
+    PATH=$PATH:/opt/rh/rh-php70/root/usr/bin \
     CONTENT_DIR=/var/www/html \
     APACHE_APP_ROOT=/opt/app-root/src \
     TP3_VERS=8.7.1 \ 
