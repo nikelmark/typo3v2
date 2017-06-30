@@ -3,6 +3,8 @@ FROM registry.access.redhat.com/rhscl/php-70-rhel7
 # This image provides an Apache+PHP environment for running PHP
 # applications.
 
+USER 0
+
 EXPOSE 8080
 
 ENV PHP_VERSION=7.0 \
