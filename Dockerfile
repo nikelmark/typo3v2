@@ -13,7 +13,11 @@ ENV PHP_VERSION=7.0 \
     APACHE_APP_ROOT=/opt/app-root/src \
     TP3_VERS=8.7.1 \ 
     TP3_FULL_FILE=typo3_src-\${TP3_VERS} \
-    TYPO3_DL=https://get.typo3.org/8.7
+    TYPO3_DL=https://get.typo3.org/8.7 \
+    INSTALL_PKGS="rh-php70 rh-php70-php rh-php70-php-mysqlnd rh-php70-php-pgsql rh-php70-php-bcmath \
+                  rh-php70-php-gd rh-php70-php-intl rh-php70-php-ldap rh-php70-php-mbstring rh-php70-php-pdo \
+                  rh-php70-php-process rh-php70-php-soap rh-php70-php-opcache rh-php70-php-xml \
+                  rh-php70-php-gmp"
 
 ENV SUMMARY="Platform for building and running PHP $PHP_VERSION applications" \
     DESCRIPTION="PHP $PHP_VERSION available as docker container is a base platform for \
@@ -41,10 +45,6 @@ LABEL summary="$SUMMARY" \
 RUN yum repolist > /dev/null && \
     yum-config-manager --enable rhel-server-rhscl-7-rpms && \
     yum-config-manager --enable rhel-7-server-optional-rpms && \
-    INSTALL_PKGS="rh-php70 rh-php70-php rh-php70-php-mysqlnd rh-php70-php-pgsql rh-php70-php-bcmath && \
-                  rh-php70-php-gd rh-php70-php-intl rh-php70-php-ldap rh-php70-php-mbstring rh-php70-php-pdo && \
-                  rh-php70-php-process rh-php70-php-soap rh-php70-php-opcache rh-php70-php-xml && \
-                  rh-php70-php-gmp" && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     yum clean all -y
